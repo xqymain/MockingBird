@@ -1,7 +1,7 @@
 from encoder.params_model import model_embedding_size as speaker_embedding_size
-from utils.argutils import print_args
-from utils.modelutils import check_model_paths
-from synthesizer.inference import Synthesizer
+#from utils.argutils import print_args
+#from utils.modelutils import check_model_paths
+#from synthesizer.inference import Synthesizer
 from encoder import inference as encoder
 from vocoder import inference as vocoder
 from pathlib import Path
@@ -13,6 +13,16 @@ import torch
 import sys
 import os
 from audioread.exceptions import NoBackendError
+
+from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader
+from g2p_en import G2p
+from pypinyin import pinyin, Style
+from synthesizerFS2.utils.model import get_model
+from synthesizerFS2.utils.tools import to_device, synth_samples
+from dataset import TextDataset
+from text import text_to_sequence
+import yaml
 
 if __name__ == '__main__':
     ## Info & args
